@@ -52,7 +52,7 @@ exports.findAll = (req, res) => {
 
 // Delete a Todo with the specified id in the request
 exports.delete = (req, res) => {
-    const id = req.params.id;
+    const id = req.query.id;
 
     Todo.findByIdAndRemove(id)
       .then(data => {
@@ -91,20 +91,16 @@ exports.makeDone = (req, res) => {
         });
 }
 
-// Find a single Todo with an id
-exports.findOne = (req, res) => {
-    const id = req.params.id;
-    console.log(id);
-    var existedObj;
+// find 1 using request query
+exports.findOneWithRequestQuery = (req, res) => {
+    const id = req.query.id;
 
     Todo.findById(id)
   .then(data => {
     if (!data)
       res.status(404).send({ message: "Not found Todo with id " + id });
     else {
-        existedObj = data;
-        existedObj.isDone = true;
-        res.send(existedObj);
+        res.send(data);
     }
   })
   .catch(err => {
@@ -112,7 +108,7 @@ exports.findOne = (req, res) => {
       .status(500)
       .send({ message: "Error retrieving Todo with id=" + id });
   });
-};
+}
 
 // Update a Todo by the id in the request
 exports.update = (req, res) => {

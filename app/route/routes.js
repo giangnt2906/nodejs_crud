@@ -16,13 +16,15 @@ module.exports = app => {
     // router.get("/published", tutorials.findAllPublished);
   
     // Retrieve a single Todo with id
-    router.get("/detail/:id", todo_list.findOne);
+    //router.get("/detail/:id", todo_list.findOne);
+    router.get("/detail", todo_list.findOneWithRequestQuery)
   
     // // Update a Tutorial with id
     // router.put("/:id", tutorials.update);
   
     // Delete a Todo with id
-    router.delete("/delete/:id", todo_list.delete);
+    //router.delete("/delete/:id", todo_list.delete);
+    router.delete("/delete", todo_list.delete);
   
     // Delete all Todos
     //router.delete("/", tutorials.deleteAll);
