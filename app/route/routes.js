@@ -12,22 +12,8 @@ module.exports = app => {
     // Make a Todo as Done
     router.put("/done/:id", todo_list.makeDone);
   
-    // // Retrieve all published Tutorials
-    // router.get("/published", tutorials.findAllPublished);
-  
-    // Retrieve a single Todo with id
-    //router.get("/detail/:id", todo_list.findOne);
-    router.get("/detail", todo_list.findOneWithRequestQuery)
-  
-    // // Update a Tutorial with id
-    // router.put("/:id", tutorials.update);
-  
     // Delete a Todo with id
-    //router.delete("/delete/:id", todo_list.delete);
     router.delete("/delete", todo_list.delete);
-  
-    // Delete all Todos
-    //router.delete("/", tutorials.deleteAll);
   
     app.use('/api/todo', router);
   };
